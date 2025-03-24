@@ -1,0 +1,14 @@
+#lang sicp
+ 
+(define (pick_and_add x y z)
+  ( cond (
+          (and (>= x y)(>= z y))
+          (+ x z))
+         (
+          (and (>= x z)(>= y z))
+          (+ x y))
+         (
+          else (+ y z))))
+
+(pick_and_add  3 2 4)
+         

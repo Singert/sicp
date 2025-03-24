@@ -1,0 +1,5 @@
+#lang sicp
+(define (cbrt x guess percision)
+  (if (good-enough?(x guess percision))
+      guess
+      (cbrt (x (improve (x guess)) percision))))

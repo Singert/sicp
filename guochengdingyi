@@ -1,0 +1,4 @@
+#lang sicp
+(define (f a b) (+ (* a a ) (* b  b)))
+
+(f 4 5)

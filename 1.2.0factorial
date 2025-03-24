@@ -1,0 +1,33 @@
+#lang sicp
+(define (factorial n) ;;;递归方法实现阶乘
+  (if (= n 1)
+      1
+      (* n (factorial (- n 1)))))
+
+(factorial 5) 
+
+
+(define (fctrl n) ;;; 递归方法实现阶乘
+  (define (fctrl-iter y x)
+    (if (= y x)
+        y
+        (* y (fctrl-iter (+ y 1) x))))
+  (fctrl-iter 1 n))
+(fctrl 5)
+#|
+递归方法计算时，通过替换模型查看计算过程，可以观察到先展开再收缩：
+     即，计算时需要维持的描述状态的变量数目先增大后减小
+迭代方法计算时，通过替换模型查看计算过程，可以观察到长度不变化：
+     即，计算时需要维持的描述状态的变量数目不发生变化
+|#
+
+
+(define (fctrl1 n);;;迭代方法实现
+  (define (fctrl1-iter product count max-count)
+    (if (= count max-count)
+        product
+        (fctrl1-iter (* product (+ count 1) ) (+ count 1) max-count)))
+  (fctrl1-iter 1 1 n))
+
+(fctrl1 5)
+    

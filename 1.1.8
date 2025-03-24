@@ -1,0 +1,26 @@
+#lang sicp
+(define (cbrt x guess percision)
+  (if (good-enough? x guess percision)
+      guess
+      (cbrt x (improve x guess) percision)))
+
+(define (good-enough? x guess percision)
+  (<= (abs(- x(* guess guess guess)))
+      percision))
+
+(define (improve x guess)
+  (/ (+ (/ x (* guess guess)) (* 2 guess)) 3))
+
+(define (abs a)
+  (if (>= 0 a)
+      (- a)
+      a))
+
+(define (<= a b)
+  (if (< 0 (- a b))
+      #f
+      #t))
+
+
+(cbrt 27.0 1.0 0.001)
+(cbrt 28.0 1.0 0.001)

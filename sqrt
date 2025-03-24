@@ -1,0 +1,25 @@
+#lang sicp
+(define (sqrt-iter guess x percision)
+  (if (good-enough? guess x percision)
+      guess
+      (sqrt-iter (improve guess x)
+                 x percision)))
+
+(define (good-enough? guess x percision)
+  (<
+   (abs (- (/ x guess) guess))
+   percision))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average a b)
+  (/ (+ a b)
+     2))
+
+(define (abs a)
+  (cond ((> 0 a) (- a))
+        (else a)))
+
+(sqrt-iter 1.0 3.0 0.001)
+(sqrt-iter 1.0 600000000.0 0.001)
